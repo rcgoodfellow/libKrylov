@@ -10,7 +10,10 @@ SET(CMAKE_CXX_COMPILER icl++)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 SET(CMAKE_C_COMPILER icc)
-SET(CMAKE_CXX_FLAGS "-g -std=c++11 -Wall -Wextra -fcolor-diagnostics")
+SET(CMAKE_CXX_FLAGS "-g -std=c++11 -Wall -Wextra")
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics")
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 ADD_EXECUTABLE(VecTests VecTests.cxx)
 
