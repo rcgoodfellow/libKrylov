@@ -23,7 +23,8 @@ class Vec
         data[std::distance(it, d.begin())] = *it;
     }
     Vec() { }
-    double *data = (double*)_mm_malloc(sizeof(double)*N, 64);
+    //double *data = (double*)_mm_malloc(sizeof(double)*N, 64);
+    double data[N] __attribute__((aligned(64)));
     static constexpr size_t size{N};
     double & operator[](size_t i){ return data[i]; }
     double const & operator[](size_t i) const { return data[i]; }
@@ -33,8 +34,7 @@ class Vec
 template<size_t N>
 double p_norm(const Vec<N> &v)
 {
-  double *squares = (double*)_mm_malloc(sizeof(double)*v.size, 64);
-  //squares[0:v.size] = pow(v.data[0:v.size], 2);
+  double squares[N] __attribute__((aligned(64)));
   squares[0:v.size] = v.data[0:v.size] * v.data[0:v.size];
 
   double sum{0};
