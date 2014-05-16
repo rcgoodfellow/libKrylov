@@ -34,7 +34,8 @@ template<size_t N>
 double p_norm(const Vec<N> &v)
 {
   double *squares = (double*)_mm_malloc(sizeof(double)*v.size, 64);
-  squares[0:v.size] = pow(v.data[0:v.size], 2);
+  //squares[0:v.size] = pow(v.data[0:v.size], 2);
+  squares[0:v.size] = v.data[0:v.size] * v.data[0:v.size];
 
   double sum{0};
   for(size_t i=0; i<v.size; ++i) sum += squares[i];
