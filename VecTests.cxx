@@ -9,8 +9,8 @@ int main()
   std::cout << "Vector Tests" << std::endl;
   
 
-  kry::Vec<10000000> v{}; 
-  v.data[0:10000000] = 1.4747;
+  kry::Vec<100000> v{}; 
+  v.data[0:100000] = 1.4747;
 
   auto s = high_resolution_clock::now();
   double vn = p_norm(v);
