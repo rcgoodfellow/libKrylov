@@ -28,7 +28,11 @@ class Vec
     static constexpr size_t size{N};
     double & operator[](size_t i){ return data[i]; }
     double const & operator[](size_t i) const { return data[i]; }
-
+    Vec & operator /=(double d)
+    {
+      data[:] /= d; 
+      return *this;
+    }
 };
 
 template<size_t N>
